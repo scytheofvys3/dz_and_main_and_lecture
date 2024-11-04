@@ -1,3 +1,5 @@
+from re import match
+
 print ("Hello World") # =str-string строка
 
 print (type(5)) # тип числа =int-integer - целое число
@@ -18,7 +20,7 @@ print (5 ** 3) #степень
 print (type(True),type(False))
 print (5 == 5, 5 > 2, 3 < 1, 5 != 5, 5 != 4) # == - они равны?, != - они не равны?
 
-# команда and= и, or= или
+'''команда and= и, or= или'''
 
 # and= и - если все условия с двух сторон равны, то все выражения считаются истинными
 # and= и - чтобы получить «True», должны быть истинны оба выражения
@@ -279,7 +281,7 @@ my_dict['Artem'] = 1974 # а так мы могли изменить значе�
 print(my_dict)
 deleted_my_dict = my_dict.pop('Egor') # методом .pop мы можем удалить элемент, но если мы присвоим ему переменную, то значение сохранится в переменную
 print(deleted_my_dict) # вывод в консоль удаленного элемента и сохраненного в переменную
-del my_dict['Artem'] # оператор .del удаляет элемент по ключу
+del my_dict['Artem'] # оператор del удаляет элемент по ключу
 print(my_dict)
 
 my_set = {'beef', 'apple', 1, 2, 4, 5, 6, 2 ,4, 3, 'apple'} # множество состоящие из разных типов данных
@@ -297,13 +299,40 @@ avg_scores = {} # пустой словарь для среднего балла
 names = list(students) # преобразуем множество в список
 names.sort() # в алфавитном порядке методом .sort
 avg_scores.update(
-    {names[0]:sum(grades[0])/len(grades[0]), names[1]:sum(grades[1])/len(grades[1])})
+    {names[0]:sum(grades[0]) / len(grades[0]), names[1]:sum(grades[1]) / len(grades[1])})
 avg_scores.update(
-    {names[2]:sum(grades[2])/len(grades[2]), names[3]:sum(grades[3])/len(grades[3])})
+    {names[2]:sum(grades[2]) / len(grades[2]), names[3]:sum(grades[3]) / len(grades[3])})
 avg_scores.update(
-    {names[4]:sum(grades[4])/len(grades[4])})
+    {names[4]:sum(grades[4]) / len(grades[4])})
 # Обновили список следующим образом
 # {Имя[Индекс]:Сумма.sum (НазваниеСписка[Индекс]/Кол-во символов.len(НазваниеСписка[Индекс])}
-# .sum сумма чисел
-# .len кол-во символов
+# функция sum сумма чисел
+# функция len кол-во символов
 print(avg_scores)
+
+# DZ 1 GPT
+grades = {
+    'Lily': {'math': [4, 3, 5], 'english': [5, 4, 4], 'history': [3, 4]},
+    'James': {'math': [5, 5, 4], 'english': [3, 4, 3], 'history': [4, 5]}
+}
+avg_scores_by_subject = {} # пустой словарь
+avg_scores_by_subject.update(
+    {"lily":{'math':sum(grades['Lily']['math']) / len(grades['Lily']['math']),
+             'english':sum(grades['Lily']['english']) / len(grades['Lily']['english']),
+             'history':sum(grades['Lily']['history']) / len(grades['Lily']['history'])}}
+)
+avg_scores_by_subject.update(
+    {"James":{'math':sum(grades['James']['math']) / len(grades['James']['math']),
+             'english':sum(grades['James']['english']) / len(grades['James']['english']),
+             'history':sum(grades['James']['history']) / len(grades['James']['history'])}}
+)
+
+print(avg_scores_by_subject)
+print(grades['Lily']['english']) # выводим оценки по предмету 'english' для 'Lily' из словаря grades(слева направо читается код)
+
+# DZ 9
+print('Hi,PyCharm and Urban') # вывод текста в консоль
+x = 43 # присваиваем переменной х значение 43
+y = 32 # присваиваем переменной y значение 43
+print(x*y) # вывод в консоль переменной x * y
+print('End line') # вывод текста в консоль
