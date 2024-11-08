@@ -1,5 +1,3 @@
-from re import match
-
 print("Hello World") # =str-string строка
 
 print(type(5)) # тип числа =int-integer - целое число
@@ -545,3 +543,123 @@ for i in dict_:
 dict_1 = {'a': 1, 'b': 2, 'c': 3}
 for i, k in dict_1.items():
     print(i, k)
+
+# DZ GPT
+numbers = [10, 15, 20, 25, 30, 35, 40, 45, 50]
+even_numbers = []
+odd_numbers = []
+for i in range(len(numbers)): # Здесь мы перебираем все индексы списка numbers.
+    n = numbers[i] # n — это текущее число из списка `numbers`, с которым мы сейчас работаем
+    if n % 2 == 0: #  Если остаток от деления числа `n` на 2 равен 0, то оно четное
+        even_numbers.append(n) # Добавляем `n` в список четных чисел
+    else: # Иначе, если число не делится на 2 без остатка, оно нечетное
+        odd_numbers.append(n) # Добавляем `n` в список нечетных чисел
+print('Even', even_numbers)
+print('Odd', odd_numbers)
+
+numbers = [3, 10, 15, 18, 20, 21, 25, 30, 33, 35, 40, 45, 50, 60]
+divisible_by_3 = []
+divisible_by_5 = []
+for i in range(len(numbers)):
+    n = numbers[i]
+    if n % 3 == 0:
+        divisible_by_3.append(n)
+    if n % 5 == 0:
+        divisible_by_5.append(n)
+print(divisible_by_3)
+print(divisible_by_5)
+
+numbers = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
+even_numbers = []
+greater_than_ten = []
+
+for k in (numbers):
+    # k = numbers[i]
+    if k % 2 == 0:
+        even_numbers.append(k)
+    if k > 10:
+        greater_than_ten.append(k)
+
+print(even_numbers)
+print(greater_than_ten)
+
+numbers = [23, 45, 12, 67, 89, 34, 54, 23, 90, 123, 78, 56]
+odd_numbers = [] # нечетные
+even_numbers = [] # четные
+for q in numbers:
+    if q % 2 == 0:
+        even_numbers.append(q)
+    else:
+        odd_numbers.append(q)
+print(odd_numbers)
+print(even_numbers)
+print(sum(odd_numbers))
+print(sum(even_numbers))
+
+numbers = [30, 45, 60, 23, 70, 81, 90, 100, 125, 150, 170, 200]
+divisible_by_5 = []
+divisible_by_3_and_5 =[]
+greater_than_50 =[]
+for b in range(len(numbers)):
+    z = numbers[b]
+    if z % 5 == 0 and z % 3 == 0:
+        divisible_by_3_and_5.append(z)
+    if z % 5 == 0:
+        divisible_by_5.append(z)
+    if z > 50:
+        greater_than_50.append(z)
+
+print(divisible_by_5)
+print(divisible_by_3_and_5)
+print(greater_than_50)
+
+numbers = [23, 45, 60, 70, 81, 100, 150, 170, 200, 55, 30, 9, 12]
+even_numbers = [] # четные
+odd_numbers = [] # нечетные
+divisible_by_3_and_5 = []
+numbers.sort()
+for p in range(len(numbers)):
+    u = numbers[p]
+    if u % 3 == 0 and u % 5 == 0:
+        divisible_by_3_and_5.append(u)
+    if u % 2 == 0:
+        even_numbers.append(u)
+    else:
+        odd_numbers.append(u)
+print(numbers)
+print(even_numbers)
+print(odd_numbers)
+print(divisible_by_3_and_5)
+print(len(even_numbers))
+print(len(odd_numbers))
+print(sum(divisible_by_3_and_5))
+
+# DZ 11
+# Исходный список чисел от 1 до 15
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+# Пустые списки для хранения простых и не простых чисел
+primes_ = []      # Сюда добавим простые числа
+not_primes = []   # Сюда добавим числа, которые не являются простыми
+
+# Основной цикл: перебираем каждое число из списка numbers
+for i in range(len(numbers)):
+    is_prime = True     # Переменная-флаг: изначально считаем, что число простое
+    n = numbers[i]      # Текущее число из списка, которое будем проверять
+
+    # Вложенный цикл: проверяем, есть ли делители у числа n
+    # (перебираем делители от 2 до n-1)
+    for k in range(2, n):
+        if n % k == 0:    # Если n делится на k без остатка, то:
+            is_prime = False  # Меняем флаг на False, значит, число не простое
+            break            # Прерываем вложенный цикл, так как нашли делитель
+
+    # После проверки числа на простоту добавляем его в соответствующий список
+    if is_prime and n > 1:     # Если число простое и больше 1
+        primes_.append(n)      # Добавляем его в список простых чисел
+    elif n > 1:                # Если число не простое и больше 1
+        not_primes.append(n)   # Добавляем его в список не простых чисел
+
+# Выводим списки простых и не простых чисел
+print("Primes:", primes_)
+print("Not Primes:", not_primes)
