@@ -1012,13 +1012,16 @@ def my_sum(n, *args, txt = 'Сумма числе'):
 my_sum(1, 1, 2, 3, 4, 5)
 my_sum(2, 2, 3, 4, 5,txt='Сумма квадратов' )
 
-def single_root_words(root_word, *other_words):
-    same_words = []
-    root_word = root_word.lower()
-    for i in other_words:
-        if root_word in i.lower() or i.lower() in root_word:
-            same_words.append(i)
-    return same_words
+# DZ 16
+def single_root_words(root_word, *other_words): # определяем функцию с двумя аргументами (первый позиционный и второй *кортеж)
+    same_words = [] # создание пустого списка
+    root_word = root_word.lower() # объявляем, что root.world равен root.world.lower() преобразует аргумент в нижний регистр (название такое же так как переменные взаимозаменяемые)
+    for i in other_words: # цикл перебора в котором переменная i временно принимает значение из списка
+        if root_word in i.lower() or i.lower() in root_word: # проверка. если(if) root_word в(in) i.lower()
+            # получается что мы проверяем есть ли слово root_word в индексе i, который при проверке преобразует слово в нижний регистр, но при в добавление в список сохранит изначальный регистр
+            # так же проверяем и обратно
+            same_words.append(i) # если есть совпадение, то добавляем слово хранящиеся в переменной i в список
+    return same_words # возвращаем значение в список
 
 result1 = single_root_words('rich', 'richiest', 'orichalcum', 'cheers', 'richies')
 result2 = single_root_words('Disablement', 'Able', 'Mable', 'Disable', 'Bagel')
