@@ -1168,8 +1168,8 @@ print(dir(a))
 # Метод isinstance() используется для проверки принадлежности объекта к определенному классу или типу данных.
 # Он принимает два аргумента: объект, который нужно проверить, и класс или тип данных,
 # к которому нужно проверить принадлежность.
-## isinstance - (объект, тип данных)
-'''isinstance - относится экземпляр'''
+## isinstance - (объект, (тип данных))
+'''isinstance - относится экземпляр, этот экземпляр '''
 print(isinstance(b, str)) # выводим в консоль относится ли переменная b к классу str-строка
 # true - da, false - no
 ## Аналогичного результата можно добиться, если проверить через type равняется
@@ -1368,3 +1368,30 @@ print(reverse_list([1, 2, 3, 4, 5]))
 
 print(not [])
 print(not [1, 2, 3])
+
+# DZ 18
+data_structure = [
+    [1, 2, 3],
+    {'a': 4, 'b': 5},
+    (6, {'cube': 7, 'drum': 8}),
+    "Hello",
+    ((), [{(2, 'Urban', ('Urban2', 35))}])
+]
+def calculated_structure(data): # создаем функцию с позиционным аргументом
+    total_sum = 0
+    if isinstance(data, (int, float)): # если этот экземпляр(isinstance, объект, (тип данных, если их несколько-то в скобки)-True-Истина
+        total_sum += data # то в переменную тоталсум прибавляем это значение и сохраняем
+    elif isinstance(data, str): # иначе если этот экземпляр(isinstance, объект, строка)- True-Истина
+        total_sum += len(data) # то в переменную тоталсум прибавляем и сохраняем длину строки
+    elif isinstance(data,(list, set, tuple)): # иначе если этот экземпляр(isinstance, объект, (тип данных, тип данных) True-Истина
+        for element in data: # цикл для elementa в data
+            total_sum += calculated_structure(element) # рекурсивный вызов функции (в начале где иф)
+    elif isinstance(data, dict): # иначе если этот экземпляр(isinstance, объект, (тип данных, тип данных)
+        for key, value in data.items(): # цикл для словаря. так как в словаре два аргумента, то и временных переменной тоже две
+                                        # метод .item позволяет получить ключ и значение
+            total_sum += calculated_structure(key) # рекурсивный вызов функции для ключа (в начале где иф)
+            total_sum += calculated_structure(value) # рекурсивный вызов функции для значения (в начале где иф)
+    return total_sum # возвращаем в ответ total_sum
+
+result = calculated_structure(data_structure) # переменная в которой функция и ее аргумент
+print(result)
